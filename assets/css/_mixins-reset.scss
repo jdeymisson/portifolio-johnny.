@@ -1,0 +1,79 @@
+/* ====== Reset CSS ====== */
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    display: block;
+}
+
+ul, li {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+/* ====== Variáveis ====== */
+
+$cor-primaria: #704CBC;
+$cor-secundaria: #84F7B4;
+$cor-background: #131417;
+$branco: #fff;
+         /* font-size */
+$font-paragrafo: 0.875rem;
+$font-titulo: 1.5rem;
+$font-sub-titulo: 1.25rem;
+$font-tipo: 0;
+
+$size:0;
+
+/* ====== Mixins ====== */
+
+@mixin font-tipo ($font-tipo){
+    @if $font-tipo == titulo {
+        font-size: $font-titulo;
+        font-weight: 700;
+        text-align: center;
+        color: $branco;
+        line-height: 1.5;
+        &::after {
+            content: '';
+            display: block;
+            bottom: 0;
+            width: 70px;
+            height: 5px;
+            background: $cor-primaria;
+            margin: 0 auto;
+        }
+
+    } @else if  $font-tipo == sub-titulo {
+        font-size: $font-sub-titulo;
+        font-weight: 700;
+        color: $cor-secundaria;
+        line-height: 1.4;
+    } @else if $font-tipo == paragrafo {
+        font-size: $font-paragrafo;
+        font-weight: 400;
+        line-height: 1.5;
+        color: $branco;
+    }
+}
+
+/* Mixins responsiveis */ 
+@mixin responsive ($size) {
+   @if $size == tablet {
+       @media only screen and (max-width: 768px) {
+           @content;
+       }
+   }@else if $size == desktop {
+        @media only screen and (min-width: 769px) {
+            @content;
+        }
+   }
+}
